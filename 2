@@ -1,0 +1,13 @@
+#!/bin/bash
+#to make to file name friendly
+Backuptime=`date +%d-%m-%y`
+#to use the current user folders
+user=`whoami`
+#the Dest
+Dest=/home/$user/backup/backup-$Backuptime.tar.gz
+#to get the folder to backup from user
+read -p "the folder you want to backup : " Src
+#create and compress the backup to save storage
+tar -Pcpzf $Dest $Src
+#message to user that the proccess is completed
+echo "the folder has a backup to file $Dest"
