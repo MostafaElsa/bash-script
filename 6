@@ -1,0 +1,9 @@
+#!/bin/bash
+domains=$1
+user=`whoami`
+path1="/home/$user/domain/x.txt"
+path2="/home/$user/domain/output.txt"
+subfinder -dL $domains -o $path1 > /dev/null 2>&1;
+sort -u $path1 > $path2;
+echo "file $path2 contains the subdomains"
+rm $path1
