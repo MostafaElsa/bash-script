@@ -1,0 +1,20 @@
+#!/bin/bash
+read -p "enter the lenght of password you want : " len
+read -p "enter the complexity of password you want from 1 to 4 : " comp
+if [ $comp == 1 ]
+then
+	Password=$(tr -dc 'A-Za-z0-9' < /dev/urandom | head -c $len)
+elif [ $comp == 2 ]
+then
+	Password=$(tr -dc 'A-Za-z0-9!@#' < /dev/urandom | head -c $len)
+elif [ $comp == 3 ]
+then
+	Password=$(tr -dc 'A-Za-z0-9!@#$%^' < /dev/urandom | head -c $len)
+elif [ $comp == 4 ]
+then
+	Password=$(tr -dc 'A-Za-z0-9!@#$%^&~_' < /dev/urandom | head -c $len)
+else
+	echo "complexity of password is out of [1-4]"
+	exit
+fi
+echo "${Password}"
