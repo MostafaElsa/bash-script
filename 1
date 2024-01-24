@@ -1,0 +1,8 @@
+#!/bin/bash
+read -p "please enter the path of the file: " path
+size=`ls -ls ${path} | cut -d" " -f1`
+perm=`ls -ls ${path} | cut -d" " -f2 | cut -c 2-`
+echo "size: ${size}"
+echo "type: `file ${path} | cut -d" " -f2-`"
+echo "perm: ${perm}"
+
