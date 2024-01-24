@@ -1,0 +1,13 @@
+#!/bin/bash
+warp-cli connect
+ifconfig | grep "CloudflareWARP" > test.txt
+test=test.txt
+if [ -s "${test}" ]
+then
+	echo "the ip has been assigned"
+fi
+sudo openvpn ./Desktop/MustafaElsayed.ovpn > /dev/null 2>&1 &
+ping -c 3 10.10.10.10;
+warp-cli disconnect
+
+
